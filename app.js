@@ -19,10 +19,10 @@ app.listen(port, ()=>{
 })
 
 const config = {
-  database: 'stock_app_data',
-  host: 'localhost',
-  user: 'hajarashareef',
-  password: 'skjnf!H1IOJ',
+  database: 'd20p96p1rqdaj1',
+  host: 'lec2-3-217-251-77.compute-1.amazonaws.com',
+  user: 'xnptgqayypwpjx',
+  password: '96b307fdc60954fa76b0b0d854c04979a81ceaf711ed8311867590721fcfa86c',
   port: 5432 
 };
 
