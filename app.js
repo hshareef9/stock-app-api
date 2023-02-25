@@ -19,11 +19,11 @@ app.listen(port, ()=>{
 })
 
 const config = {
-  database: 'd20p96p1rqdaj1',
-  host: 'lec2-3-217-251-77.compute-1.amazonaws.com',
-  user: 'xnptgqayypwpjx',
-  password: '96b307fdc60954fa76b0b0d854c04979a81ceaf711ed8311867590721fcfa86c',
-  port: 5432 
+  database: process.env.REACT_APP_DATABASE,
+  host: process.env.REACT_APP_HOST,
+  user: process.env.REACT_APP_USER,
+  password: process.env.REACT_APP_PASSWORD,
+  port: process.env.REACT_APP_PORT
 };
 
 var pool = new pg.Pool(config);
@@ -76,7 +76,7 @@ app.get('/getStock/:ticker', (req, res)=>{
       return new Promise((resolve, reject)=>{
         pool.query(text, async (err, res) => {
           if (err) {
-            reject(err);
+            reject('error');
           } 
           else if(res.rows.length===0){
             let dbResponse= await JSON.stringify({"result": null});
@@ -91,7 +91,7 @@ app.get('/getStock/:ticker', (req, res)=>{
       });
     };  
 
-    sendRequest().then((success)=>{res.send(success);}, (failure)=>{res.send(failure);});
+    sendRequest().then((success)=>{res.send(success);}, (failure)=>{res.send('failure');});
   }
   else{
     throw error;
